@@ -16,26 +16,27 @@ public class SecurityConfig {
 	}
 	
 	@Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-            .authorizeRequests(authorize -> authorize
-                .requestMatchers("/login", "/registration", "/css/**", "/js/**", "/images/**", "/favicon.ico").permitAll()  // Ensure /login is allowed
-                .anyRequest().authenticated()  // All other requests require authentication
-            )
-            .formLogin(form -> form
-            	    .loginPage("/login")             // GET request - serves your custom page via controller
-            	    .loginProcessingUrl("/perform_login") // POST request - handled by Spring Security, not a controller
-            	    .defaultSuccessUrl("/home", true)
-            	    .permitAll()
-            	)
-            .logout(logout -> logout
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login?logout")
-                .permitAll()
-            );
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+	    http
+	        .authorizeHttpRequests(authorize -> authorize
+	            .requestMatchers("/login", "/registration", "/css/**", "/js/**", "/images/**", "/favicon.ico").permitAll()
+	            .anyRequest().authenticated()
+	        )
+	        .formLogin(form -> form
+	            .loginPage("/login")
+	            .loginProcessingUrl("/perform_login")
+	            .defaultSuccessUrl("/home", true)
+	            .permitAll()
+	        )
+	        .logout(logout -> logout
+	            .logoutUrl("/logout")
+	            .logoutSuccessUrl("/login?logout")
+	            .permitAll()
+	        );
 
-        return http.build();
-    }
+	    return http.build();
+	}
+
 
 
 

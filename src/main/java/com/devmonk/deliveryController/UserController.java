@@ -39,7 +39,7 @@ public class UserController {
 	    
 	    String siteURL = request.getRequestURL().toString();
 	    deliveryService.saveUserWithRole(user, roleName, siteURL);
-	    model.addAttribute("message", "Registered Successfully! Please check your email to verify your account.");
+	    model.addAttribute("message", "Registered Successfully!");
 	    return "register_success";
 	}
 
