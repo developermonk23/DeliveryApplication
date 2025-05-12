@@ -1,12 +1,12 @@
-package model;
+package com.devmonk.model;
 
-import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Role {
@@ -17,8 +17,9 @@ public class Role {
 
     private String name;
     
-    @OneToMany(mappedBy = "role")
-    private List<User> users;
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
+
 
 	public Long getId() {
 		return id;
@@ -36,11 +37,11 @@ public class Role {
 		this.name = name;
 	}
 
-	public List<User> getUsers() {
+	public Set<User> getUsers() {
 		return users;
 	}
 
-	public void setUsers(List<User> users) {
+	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
 	

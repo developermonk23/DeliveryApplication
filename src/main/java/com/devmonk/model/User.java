@@ -1,4 +1,4 @@
-package model;
+package com.devmonk.model;
 
 import java.util.Set;
 
