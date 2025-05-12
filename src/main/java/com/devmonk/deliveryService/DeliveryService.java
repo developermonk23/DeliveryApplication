@@ -5,10 +5,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import model.Role;
-import model.User;
-import repository.RoleRepository;
-import repository.UserRepository;
+import com.devmonk.model.Role;
+import com.devmonk.model.User;
+import com.devmonk.repository.RoleRepository;
+import com.devmonk.repository.UserRepository;
 
 @Service
 public class DeliveryService {

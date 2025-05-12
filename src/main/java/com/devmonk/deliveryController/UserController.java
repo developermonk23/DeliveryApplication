@@ -6,20 +6,24 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.devmonk.deliveryService.DeliveryService;
+import com.devmonk.model.User;
 
 import jakarta.servlet.http.HttpServletRequest;
-import model.User;
 
 @Controller
-@RequestMapping("/delivery")
 public class UserController {
 	
 	@Autowired
 	private DeliveryService deliveryService;
+	
+	// To populate login page
+		@GetMapping("/login")
+		public String login() {
+		    return "login";
+		}
 	
 	@GetMapping("/registration")
 	public String getRegistrationPage(@ModelAttribute("user") User user) {
@@ -39,9 +43,4 @@ public class UserController {
 	    return "register_success";
 	}
 
-	// To populate login page
-	@GetMapping("/login")
-	public String login() {
-	    return "login";
-	}
 }
